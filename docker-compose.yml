@@ -12,6 +12,8 @@ services:
       - 5000:5000
     environment:
       DB_URL: mongodb://db/vidly
+    depends_on: # its depend on db, so it will make sure first db container running.
+      - db
   db:
     image: mongo:4.0-xenial # this is mongodb docker image
     ports:
@@ -19,3 +21,5 @@ services:
 
 volumes:
   vidly:
+
+# when docker-compose up command will run, it will create server for all frontend, backend and db.
